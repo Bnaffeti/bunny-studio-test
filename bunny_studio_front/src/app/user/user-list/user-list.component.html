@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>User List</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>
+                        <button (click)="updateUser(user.id)" style="margin-right: 0.5rem;" class="btn btn-info">Update</button>
+                        <button (click)="deleteUser(user.id)" style="margin-right: 0.5rem;" class="btn btn-danger">Delete</button>
+                        <button (click)="tasks(user.id)" class="btn btn-success">Tasks</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a routerLink="../add" class="nav-link" routerLinkActive="active">Add User</a>
+    </div>
+</div>

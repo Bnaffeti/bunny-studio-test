@@ -1,0 +1,12 @@
+<h3>Create User</h3>
+<div style="width: 400px;">
+    <form action="#" [formGroup]="userForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+        </div>
+
+        <button type="submit" class="btn btn-success" (click)="save()">Add User</button>
+    </form>
+</div>
+<a class="nav-link" routerLink="/users" class="nav-link" routerLinkActive="active">Back to user list</a>

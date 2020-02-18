@@ -1,0 +1,59 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Task List</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of taskList">
+                    <td>{{task.id}}</td>
+                    <td>{{task.description}}</td>
+                    <td>{{task.status}}</td>
+                    <td>
+                        <button data-toggle="modal" data-target=".new-task-modal" (click)="updateTask(task)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a class="add_task" data-toggle="modal" data-target=".new-task-modal">Add New Task</a>
+    </div>
+
+</div>
+<a class="nav-link" routerLink="/users" class="nav-link" routerLinkActive="active">Back to user list</a>
+
+
+<!-- NEW TASK POPUP -->
+<div class="modal fade new-task-modal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:#0D2A61" class="modal-title">{{taskToUpdate ? 'Update' : 'Create'}} Task</h5>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" [formGroup]="taskForm">
+                    <div class="form-group">
+                        <label for="name">Description</label>
+                        <input type="text" class="form-control" formControlName="description">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Status</label>
+                        <select class="form-control" formControlName="state">
+                            <option value="todo">Todo</option>
+                            <option value="todo">Done</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success" (click)="save()" data-dismiss="modal">{{taskToUpdate ? 'Update' : 'Add'}} Task</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
